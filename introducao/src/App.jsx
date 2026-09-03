@@ -1,26 +1,28 @@
 
+import { useState } from "react"
+
 function App() {
 
-  let nome = "Kaique"
-  let sobrenome = "Jesus"
-  let nome_completo = nome + " " + sobrenome
+  let [cliques, alteraCliques] = useState(0)
+  let [nome, alterarNome] = useState("aguardando...")
 
-  let cliques = 0 // let cliques = useState(0) // useState é uma função do React que permite criar um estado para a variável cliques
-
-  function aumentarCliques() {
-    cliques += 1
+  function carregarNome(){
+    alterarNome("Kaique")
   }
 
   return (
     <div>
-      <h1>Olá {2+2} Mundo!</h1>
-      <p>Estou apren{console.log("flores")}dendo React!</p>
-      <p>Meu nome é {nome_completo}</p>
+
+      <h1>Olá Mundo!</h1>
+      <p>Estou aprendendo React!</p>
+      <p>Meu nome é : {nome}</p>
+      <button onClick={carregarNome}>Carregar nome</button>
 
       <hr/>
 
       <p>Você clicou {cliques} vezes</p>
-      <button onClick={aumentarCliques}>Clique aqui!</button>
+      <button onClick={ () => alteraCliques(cliques + 1) }>Clique aqui!</button>
+
     </div>
   )
 }
